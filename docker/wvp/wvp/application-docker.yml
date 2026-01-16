@@ -108,7 +108,7 @@ media:
   # 启用多端口模式, 多端口模式使用端口区分每路流，兼容性更好。 单端口使用流的ssrc区分， 点播超时建议使用多端口测试
   rtp:
     # [可选] 是否启用多端口模式, 开启后会在portRange范围内选择端口用于媒体流传输
-    enable: false
+    enable: true
     # [可选] 
     port-range: 30000,30500 
     # [可选] 
@@ -119,7 +119,7 @@ media:
   record-assist-port: 0
 user-settings:
     auto-apply-play: true
-    play-timeout: 30000
+    play-timeout: 60000
     wait-track: false
     record-push-live: ${RecordPushLive:false}
     record-sip: ${RecordSip:false}
@@ -139,4 +139,19 @@ user-settings:
     jwkFile: classpath:xxxxxxxxxxx.json
 logging:
   config: classpath:logback-spring.xml
+# 做为JT1078服务器的配置
+ftp:
+  #[必须修改] 是否开启1078的服务
+  enable: true
+  port: 2121
+  passive-ports: 10000-10500
+
+# 做为JT1078服务器的配置
+jt1078:
+    #[必须修改] 是否开启1078的服务
+    enable: true
+    #[必修修改] 1708设备接入的端口
+    port: 21078
+    #[可选] 设备鉴权的密码
+    password: admin123
 
