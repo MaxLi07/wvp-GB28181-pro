@@ -60,6 +60,8 @@ services:
       - media-net
     ports:
       - "6080:6080/tcp"                   # HTTP 播流
+      - "8000:8000/udp"                   # WebRTC UDP
+      - "8000:8000/tcp"                   # WebRTC TCP (fallback)
       - "${MediaRtmp:-10001}:${MediaRtmp:-10001}/tcp"   # RTMP 收流
       - "${MediaRtmp:-10001}:${MediaRtmp:-10001}/udp"
       - "${MediaRtsp:-10002}:${MediaRtsp:-10002}/tcp"   # RTSP 收流
