@@ -69,6 +69,12 @@ services:
      #- "45540:45540/tcp"   # [收流]RTSPS 无效
       - "${MediaRtp:-10000}:${MediaRtp:-10000}/tcp"   # [收流]RTP   
       - "${MediaRtp:-10000}:${MediaRtp:-10000}/udp"   # [收流]RTP   
+      - "30000-30500:30000-30500/udp" # [收流]RTP动态端口范围
+      - "8160:8160/udp"
+      - "8080:8080"
+      - "8081:8081"
+      - "10001:10001"
+      - "10002:10002"
     volumes:
       - ./volumes/video:/opt/media/bin/www/record/
       - ./logs/media:/opt/media/log/
@@ -153,4 +159,4 @@ services:
       
 networks:
   media-net:
-    driver: bridge
+    driver: host
